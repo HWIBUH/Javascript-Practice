@@ -1,0 +1,2 @@
+# kalkulator
+hanya kalkulator biasa

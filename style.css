@@ -3,10 +3,9 @@ body {
     padding: 0;
 }
 .screen {
-    width: 60%;
-    height: 450px;
+    width: 600px;
+    height: 300px;
     border: 2px solid black;
     border-radius: 10px;
     margin: auto ;
-
 }

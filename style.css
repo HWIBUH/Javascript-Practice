@@ -9,3 +9,24 @@ body {
     border-radius: 10px;
     margin: auto ;
 }
+.number {
+    width: 500px;
+    align-items:center;
+    justify-content: center;
+    margin: auto;
+}
+.row {
+    display: flex;
+}
+p {
+    font-size: 20px;
+    text-align: center;
+    width: 80px;
+    padding: 20px 0px;
+    border: 1px solid black;
+    margin: 10px 10px;
+    border-radius: 10px;
+}
+p:hover {
+    background-color: lightcoral;
+}

@@ -3,27 +3,41 @@
 
 let number = document.querySelectorAll("#number")
 let screen = document.querySelector("#screen")
+let recent = document.querySelector("#recent")
 let backspace = document.querySelector("#ac")
 let operator = document.querySelectorAll("#operator")
 let result = document.querySelector(".result")
 let percentage = document.querySelector("#percentage")
 let plusmin = document.querySelector("#plusmin")
 let ope = ""
-let firstNumber = undefined
+let operation = undefined
+let reset
+
 
 number.forEach((num) => {
     num.addEventListener('click', () => {
+        if(reset == true) {
+            recent.innerHTML= screen.innerHTML
+            screen.innerHTML = ""
+        }
         screen.innerHTML += num.innerHTML
+        reset = false
     })
 })
 
 backspace.addEventListener('click', () => {
-    screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length-1)
+    if(reset) {
+        recent.innerHTML = ""
+    }
+    else {
+        screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length-1)
+    }  
 })
 
 operator.forEach((oper) => {
     oper.addEventListener('click', () => {
-        firstNumber = screen.innerHTML
+        reset = false
+        recent.innerHTML = screen.innerHTML
         screen.innerHTML = ""
         ope = oper.innerHTML
         console.log(ope)
@@ -41,16 +55,20 @@ plusmin.addEventListener('click', () => {
 result.addEventListener('click', () => {
     switch(ope) {
         case "-" :
-            screen.innerHTML = firstNumber - screen.innerHTML
+            screen.innerHTML = recent.innerHTML - screen.innerHTML
+            reset = true
             break
         case "+" :
-            screen.innerHTML = firstNumber + screen.innerHTML
+            screen.innerHTML = recent.innerHTML + screen.innerHTML
+            reset = true
             break
         case "x" :
-            screen.innerHTML = firstNumber * screen.innerHTML
+            screen.innerHTML = recent.innerHTML * screen.innerHTML
+            reset = true
             break
         case "/" :
-            screen.innerHTML = firstNumber / screen.innerHTML
+            screen.innerHTML = recent.innerHTML / screen.innerHTML
+            reset = true
             break
     }
 })

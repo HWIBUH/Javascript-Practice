@@ -31,7 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30vh;
+    height: 40vh;
 }
 .color {
     width: 30vw;
@@ -49,15 +49,24 @@ main {
     padding: 15px 20px;
     color: whitesmoke;
 }
-.copy {
-    font-size: 20px;
-    text-align: left;
-    font-family: sans-serif;
-    font-weight:900;
-    padding: 10px 20px;
+.tool {
+    width: 40vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+.interact {
+    padding: 0px 20px;
     border: 2px solid #161618;
     border-radius: 40px;
 }
-.copy:hover {
+.interact p{
+    font-size: 20px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight:900;
+    transform: translateY(50%); 
+}
+.interact:hover {
     cursor: pointer;
 }

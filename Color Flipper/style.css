@@ -65,7 +65,8 @@ main {
     text-align: center;
     font-family: sans-serif;
     font-weight:900;
-    transform: translateY(50%); 
+    transform: translateY(50%);
+    color: #161618;
 }
 .interact:hover {
     cursor: pointer;

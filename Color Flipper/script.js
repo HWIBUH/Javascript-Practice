@@ -1,6 +1,7 @@
 let body_color = document.querySelector("body")
 let red = blue = green = 0
-let copy_button = document.querySelector(".copy")
+let copy_rgb_button = document.querySelector(".copyrgb")
+let copy_hex_button = document.querySelector(".copyhex")
 let generate_button = document.querySelector(".generate")
 let rgb = document.querySelector(".rgb")
 let hex = document.querySelector(".hex")
@@ -13,9 +14,6 @@ generate_button.addEventListener('click', () => {
     rgb.innerHTML = `${red},${green},${blue}`
     hex.innerHTML = rgbToHex(red, green, blue)
 })
-copy_button.addEventListener('click', () => {
-    console.log(red, blue, green)
-})
 
 function rgbToHex(red, green, blue) {
     var code = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
@@ -23,18 +21,13 @@ function rgbToHex(red, green, blue) {
     return hexcode
 }
 
-function setClipboard(text) {
-    const type = "text/plain";
-    const blob = new Blob([text], { type });
-    const data = [new ClipboardItem({ [type]: blob })];
-    navigator.clipboard.write(data);
-  }
-
-copy_button.addEventListener('click', () => {
-    if (copy_button.innerHTML == "Copy RGB") {
-        setClipboard(`${red},${green},${blue}`)
-    }
-    else if (copy_button.innerHTML == "Copy Hex") {
-        setClipboard(rgbToHex(red, green, blue))
-    }
+copy_rgb_button.addEventListener('click', () => {
+    rgb.value = `${red},${green},${blue}`
+    navigator.clipboard.writeText(rgb.value)
+    alert("Copying RGB code :" + rgb.value)
+})
+copy_hex_button.addEventListener('click', () => {
+    hex.value = rgbToHex(red, green, blue)
+    navigator.clipboard.writeText(hex.value)
+    alert("Copying HEX code : " + hex.value)
 })

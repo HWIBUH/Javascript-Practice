@@ -1,10 +1,11 @@
 let body_color = document.querySelector("body")
-let red = blue = green = 0
+let red = blue = green = 255
 let copy_rgb_button = document.querySelector(".copyrgb")
 let copy_hex_button = document.querySelector(".copyhex")
 let generate_button = document.querySelector(".generate")
 let rgb = document.querySelector(".rgb")
 let hex = document.querySelector(".hex")
+let interact = document.querySelectorAll(".interact")
 
 generate_button.addEventListener('click', () => {
     red = Math.floor(Math.random()*255)+1
@@ -13,6 +14,8 @@ generate_button.addEventListener('click', () => {
     body_color.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
     rgb.innerHTML = `${red},${green},${blue}`
     hex.innerHTML = rgbToHex(red, green, blue)
+    body_color.style.backgroundColor = `rgb(${red},${green},${blue})`
+    generate_button.children[0].style.color = `rgb(${red},${green},${blue})`
 })
 
 function rgbToHex(red, green, blue) {
@@ -30,4 +33,17 @@ copy_hex_button.addEventListener('click', () => {
     hex.value = rgbToHex(red, green, blue)
     navigator.clipboard.writeText(hex.value)
     alert("Copying HEX code : " + hex.value)
+})
+
+console.log(interact);
+
+interact.forEach((button) => {
+    button.addEventListener('mouseover', () => {
+        button.style.backgroundColor = "#161618"
+        button.children[0].style.color = `rgb(${red},${green},${blue})`
+    })
+    button.addEventListener('mouseout', () => {
+        button.children[0].style.color = "#161618"
+        button.style.backgroundColor = "transparent"
+    })
 })
